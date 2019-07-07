@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import nhannatc.nowplaying.android.app.adapter.MovieListRecylerAdapter
+import nhannatc.nowplaying.android.app.application.App
 import nhannatc.nowplaying.android.app.databinding.ActivityMainBinding
 import nhannatc.nowplaying.android.app.model.Movie
 import nhannatc.nowplaying.android.app.network.DataLoader
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerView : RecyclerView
     var adapter : MovieListRecylerAdapter? = null
     var isLock = false;
-    lateinit var viewmodel : MovieListViewModel
+    @Inject lateinit var viewmodel : MovieListViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,14 +36,17 @@ class MainActivity : AppCompatActivity() {
             initViews()
             val binding : ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
             viewmodel = ViewModelProviders.of(MainActivity@this).get(MovieListViewModel::class.java)
+//            (application as App).getApplicationComponent().inject(this)
             binding.vm = viewmodel
             binding.lifecycleOwner = this
+            binding.setVariable(BR.vm, viewmodel)
+            binding.executePendingBindings()
 
             adapter = viewmodel.getData()?.let { MovieListRecylerAdapter(it) }
             recyclerView.adapter = adapter
             viewmodel.model.observe(this, Observer { it -> adapter!!.replaceData(it!!) })
             viewmodel.isLock.observe(this, Observer { it ->
-                showOrHideLoading(it!!)
+//                showOrHideLoading(it!!)
                 Log.d("NhanNATC", "==== isLock : " + it)
             })
 

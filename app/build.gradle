@@ -8,7 +8,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "nhannatc.nowplaying.android.app"
+        applicationId "nhannatc.nowplaying.android.App"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
@@ -30,6 +30,7 @@ android {
             // Default is 100.
             option("-Xmaxerrs", 500)
         }
+        generateStubs = true
     }
 }
 
@@ -49,8 +50,9 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-    implementation "com.google.dagger:dagger:2.8"
-    annotationProcessor "com.google.dagger:dagger-compiler:2.8"
+    implementation "com.google.dagger:dagger:2.11"
+    kapt "com.google.dagger:dagger-compiler:2.11"
+    compileOnly 'javax.annotation:jsr250-api:1.0'
 //    kapt "com.android.databinding:compiler:$gradle_version"
 }
 
