@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var recyclerView : RecyclerView
     var adapter : MovieListRecylerAdapter? = null
     var isLock = false;
-    @Inject lateinit var viewmodel : MovieListViewModel
+    /*@Inject */lateinit var viewmodel : MovieListViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView.adapter = adapter
             viewmodel.model.observe(this, Observer { it -> adapter!!.replaceData(it!!) })
             viewmodel.isLock.observe(this, Observer { it ->
-//                showOrHideLoading(it!!)
+                showOrHideLoading(it!!)
                 Log.d("NhanNATC", "==== isLock : " + it)
             })
 

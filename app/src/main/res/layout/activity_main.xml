@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
             android:background="@color/colorBlackTransparent"
             android:gravity="center"
-            android:visibility="@{vm.isLock() ? View.VISIBLE : View.GONE}">
+            android:visibility="@{vm.isLock ? View.VISIBLE : View.GONE}">
             <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

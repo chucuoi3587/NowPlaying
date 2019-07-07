@@ -12,7 +12,7 @@ import nhannatc.nowplaying.android.app.webservices.GetPopularMovieWs
 import org.json.JSONObject
 import javax.inject.Inject
 
-class MovieListViewModel @Inject constructor(application: Application) : AndroidViewModel(application) {
+class MovieListViewModel /*@Inject constructor*/(application: Application) : AndroidViewModel(application) {
     val model : MutableLiveData<ArrayList<Movie>> = MutableLiveData()
     private var mContext : Context
     private var mGetPopularMoviesWs : GetPopularMovieWs
