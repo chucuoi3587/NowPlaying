@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="text_size_1">16dp</dimen>
+    <dimen name="card_margin">5dp</dimen>
+    <dimen name="average_vote_corner_radius">4dp</dimen>
+    <dimen name="card_album_radius">4dp</dimen>
+    <dimen name="card_album_height">160dp</dimen>
+</resources>
